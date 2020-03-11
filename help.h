@@ -16,6 +16,7 @@ class list
 
     void add();
     void display();
+    
   private:
     node * head;
 };

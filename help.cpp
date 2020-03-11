@@ -1,17 +1,25 @@
 #include "help.h"
 
-
+// constructor
 list :: list()
 {
   head = NULL;
   return;
 }
 
+
+// Destructor
 list :: ~list()
 {
+  // check if LLL exists. Don't want to segfault
   if(!head)
     return;
 
+
+  // Iterative destructor. Holds onto head, shift head to its next, delete the
+  // holder
+  //
+  // This can be done in many ways
   while(head)
   {
       node * temp = head;
@@ -19,12 +27,14 @@ list :: ~list()
       delete temp;
   }
 
+
+  // Always safe to set deleted pointers to NULL afterwards
   head = NULL;
   return;
 
 }
 
-
+// This inserts at the end of the LLL.
 void list :: add()
 {
   // In case the LLL is empty
@@ -81,12 +91,17 @@ void list :: add()
 
 void list :: display()
 {
+
+
+  // checks if LLL is empty
   if(!head)
   {
     cout << "LLL is empty" << endl;
     return;
   }
 
+
+  // LLL is not empty, iteratively traverse and display each node's data
   node * current = head;
 
   // This traverses all the way through the list, even past the end of the LLL
